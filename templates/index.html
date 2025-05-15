@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi Non Ti Segue</title>
+</head>
+<body>
+    <h1>👀 Chi Non Ti Segue su Instagram</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <p><strong>Carica il file <code>following.json</code></strong></p>
+        <input type="file" name="following" required><br><br>
+        <p><strong>Carica il file <code>followers.json</code></strong></p>
+        <input type="file" name="followers" required><br><br>
+        <button type="submit">Scopri chi non ti segue</button>
+    </form>
+
+    {% if error %}
+        <p style="color: red;">Errore: {{ error }}</p>
+    {% endif %}
+
+    {% if result %}
+        <h2>🚫 {{ count }} persone che segui ma non ti seguono:</h2>
+        <ul>
+        {% for user in result %}
+            <li>{{ user }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
